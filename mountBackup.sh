@@ -117,7 +117,7 @@ function mount_backup(){
     sudo mkdir -p /mnt/backup
 	sudo mount /dev/mapper/backup /mnt/backup/
 	echo
-	sudo btrfs fi show /dev/mapper/backup/
+	sudo btrfs fi show /dev/mapper/backup
 	echo
 	sudo btrfs fi df /mnt/backup/
 	echo 
