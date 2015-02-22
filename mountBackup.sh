@@ -118,7 +118,13 @@ function mount_backup(){
 	sudo mount /dev/mapper/backup /mnt/backup/
 	echo
 	sudo btrfs fi show /dev/mapper/backup
+    if [ $? -ne 0 ]
+    then 
+        echo "ERROR: Could not retrieve information about '/dev/mapper/backup'. Seems to be an invalid Btrfs device."
+        exit 11
+    fi
 	echo
+	echo "Information for `df -P /mnt/backup | tail -1 | cut -d' ' -f 1`:"
 	sudo btrfs fi df /mnt/backup/
 	echo 
 }
